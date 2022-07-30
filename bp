@@ -1,0 +1,43 @@
+--[[
+
+Set an item to "" if you dont want a item to be filled.
+
+]]
+
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+local queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+local uis = game:GetService("UserInputService")
+local playeritems = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("ScreenGui").outtradesend.tradesend.ScrollingFrame.ScrollingFrame
+
+function clickitem(item)
+    for i,v in pairs(playeritems:GetChildren()) do
+        pcall(function()
+            if v.Name == item then
+                print(v)
+                 for h,w in pairs(getconnections(v.MouseButton1Click)) do
+                    w:Fire()
+                end
+            end
+        end)
+    end
+end
+
+uis.InputBegan:Connect(function(inpu)
+    if inpu.KeyCode == Enum.KeyCode.Z then
+        clickitem(getgenv().item1)
+        clickitem(getgenv().item2)
+        clickitem(getgenv().item3)
+        clickitem(getgenv().item4)
+    end
+end)
+
+game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("ScreenGui").outtradesend.tradesend.decline:GetPropertyChangedSignal("Text"):Connect(function()
+    if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("ScreenGui").outtradesend.tradesend.decline.Text == "Cancel [0]" then
+        game.Players.LocalPlayer:Kick("\nRejoining...")
+        wait()
+        game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+    end
+end)
