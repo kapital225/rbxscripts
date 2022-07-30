@@ -34,6 +34,12 @@ uis.InputBegan:Connect(function(inpu)
     end
 end)
 
+game.Players.LocalPlayer.OnTeleport:Connect(function(State)
+	if State == Enum.TeleportState.Started then
+		queueteleport("https://raw.githubusercontent.com/kapital225/rbxscripts/main/bp'))()")
+	end
+end)
+
 game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("ScreenGui").outtradesend.tradesend.decline:GetPropertyChangedSignal("Text"):Connect(function()
     if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("ScreenGui").outtradesend.tradesend.decline.Text == "Cancel [0]" then
         game.Players.LocalPlayer:Kick("\nRejoining...")
