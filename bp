@@ -36,7 +36,7 @@ end)
 
 game.Players.LocalPlayer.OnTeleport:Connect(function(State)
 	if State == Enum.TeleportState.Started then
-		queueteleport("https://raw.githubusercontent.com/kapital225/rbxscripts/main/bp'))()")
+		queueteleport("getgenv().item1 = ".. getgenv().item1.." getgenv().item2 = ".. getgenv().item2.." getgenv().item3 = ".. getgenv().item3.." getgenv().item4 = ".. getgenv().item4.. " loadstring(game:HttpGet('https://raw.githubusercontent.com/kapital225/rbxscripts/main/bp'))()")
 	end
 end)
 
